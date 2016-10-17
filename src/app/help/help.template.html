@@ -1,0 +1,169 @@
+<div class="mdl-layout mdl-layout--fixed-header">
+  <header class="mdl-layout__header">
+    <div class="mdl-layout__header-row">
+      <button [routerLink]="['/game']" class="mdl-button mdl-js-button mdl-button--icon">
+        <i>
+          <svg fill="#ffffff" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
+            <path d="M0 0h24v24H0z" fill="none"/>
+            <path d="M20 11H7.83l5.59-5.59L12 4l-8 8 8 8 1.41-1.41L7.83 13H20v-2z"/>
+          </svg>
+        </i>
+      </button>
+      <span class="mdl-layout-title">Zpět ke hře</span>
+    </div>
+  </header>
+  <div class="ribbon"></div>
+  <main class="mdl-layout__content">
+    <div class="mdl-grid">
+      <div class="mdl-cell mdl-cell--2-col mdl-cell--hide-tablet mdl-cell--hide-phone"></div>
+      <article class="mdl-cell mdl-cell--8-col">
+
+        <section class="section--center mdl-grid mdl-grid--no-spacing mdl-shadow--2dp">
+          <div class="mdl-card mdl-cell mdl-cell--12-col">
+            <div class="mdl-card__supporting-text">
+              <h4>Základní popis hry</h4>
+              <p>
+                Ve hře identitr jste postaveni do role systému IdM, který je zodpovědný za správnou synchronizaci identit napříč čtyřmi systémy, dvěma zdrojovými a dvěma cílovými. Vaším úkolem je reagovat na herní události a jednoduchým drag & drop provádět příslušné akce. Za každou správně provedenou získáte jeden bod, nestihnete-li ale zareagovat dostatečně rychle, hra končí.
+              </p>
+            </div>
+          </div>
+        </section>
+
+        <section class="section--center mdl-grid mdl-grid--no-spacing mdl-shadow--2dp">
+          <div class="mdl-card mdl-cell mdl-cell--12-col">
+            <div class="mdl-card__supporting-text">
+              <h4>Podporovaná zařízení</h4>
+              <p>
+                Hra využívá funkcionality moderních prohlížečů. Pro plnou funkčnost doporučujeme nejnovější verzi prohlížeče Firefox nebo Chrome.
+              </p>
+            </div>
+          </div>
+        </section>
+
+        <section class="section--center mdl-grid mdl-grid--no-spacing mdl-shadow--2dp">
+          <div class="mdl-card mdl-cell mdl-cell--12-col">
+            <div class="mdl-card__supporting-text">
+              <h4>Herní plocha</h4>
+              <img src="assets/img/game-stage.png">
+              <p>
+                Herní plocha je rozdělena na tři vrstvy. V horní vrstvě je zdrojový systém zaměstnaneckých identit EGJE a zdrojový systém studentských identit KOS. V prostřední vrstvě se nachází hlavní úložiště identit IdM a po jeho stranách koše pro odstraňování objektů. V dolní vrstvě jsou cílové systémy, pro zaměstnanecké identity je to systém MIS a pro všechny identity pak systém AD.
+              </p>
+            </div>
+          </div>
+        </section>
+
+        <section class="section--center mdl-grid mdl-grid--no-spacing mdl-shadow--2dp">
+          <div class="mdl-card mdl-cell mdl-cell--12-col">
+            <div class="mdl-card__supporting-text mdl-grid">
+
+              <div class="mdl-cell mdl-cell--12-col">
+                <h4>Princip hry</h4>
+                <p>
+                  Cílem hry je držet identity v konzistentním stavu napříč všemi vrstvami. Hra pravidelně generuje ve zdrojových a cílových systémech události, na které musí hráč reagovat příslušnou akcí.
+                </p>
+              </div>
+
+              <div class="mdl-cell mdl-cell--12-col">
+                <h5 >Uživatelské akce</h5>
+                <p>
+                  Veškeré akce jsou realizovány jako drag & drop identit:
+                </p>
+              </div>
+              <div class="mdl-cell mdl-cell--2-col mdl-cell--1-col-phone">
+                CREATE
+              </div>
+              <div class="section__text mdl-cell mdl-cell--10-col-desktop mdl-cell--6-col-tablet mdl-cell--3-col-phone">
+                Vytvoření identity &ndash;
+                přetáhnutí zdrojové identity nad rámeček systému.
+              </div>
+              <div class="mdl-cell mdl-cell--2-col mdl-cell--1-col-phone">
+                UPDATE
+              </div>
+              <div class="section__text mdl-cell mdl-cell--10-col-desktop mdl-cell--6-col-tablet mdl-cell--3-col-phone">
+                Napojení na existující identitu &ndash;
+                přetáhnutí zdrojové identity nad cílovou identitu
+              </div>
+              <div class="mdl-cell mdl-cell--2-col mdl-cell--1-col-phone">
+                DELETE
+              </div>
+              <div class="section__text mdl-cell mdl-cell--10-col-desktop mdl-cell--6-col-tablet mdl-cell--3-col-phone">
+                Odstranění identity nebo zrušení vazby &ndash;
+                přetáhnutí zdrojové identity nad ikonu koše
+              </div>
+
+              <div class="mdl-cell mdl-cell--12-col">
+                <h5 >Časový limit</h5>
+              </div>
+              <div class="section__circle-container mdl-cell mdl-cell--2-col mdl-cell--1-col-phone">
+                <div class="section__circle-container__circle">
+                  <img src="assets/img/user-timer.png">
+                </div>
+              </div>
+              <div class="section__text mdl-cell mdl-cell--10-col-desktop mdl-cell--6-col-tablet mdl-cell--3-col-phone">
+                Každou událost je potřeba zpracovat v časovém limitu, který je symbolizován odpočtem v podobě mizejícího kruhu okolo objektu čekajícího na zpracování. Nestihne-li hráč v určeném čase zareagovat, hra končí.
+              </div>
+
+              <div class="mdl-cell mdl-cell--12-col">
+                <h5 >Generované události</h5>
+                <p>
+                  Události generované ve zdrojových systémech jsou:
+                </p>
+              </div>
+              <div class="section__circle-container mdl-cell mdl-cell--2-col mdl-cell--1-col-phone">
+                <div class="section__circle-container__circle">
+                  <img src="assets/img/user-created.png">
+                </div>
+              </div>
+              <div class="section__text mdl-cell mdl-cell--10-col-desktop mdl-cell--6-col-tablet mdl-cell--3-col-phone">
+                Založení identity (přijetí zaměstnance nebo studenta), požadovaná akce: vytvoření identity v IdM nebo namapování na existující identitu se stejným jménem
+              </div>
+              <div class="section__circle-container mdl-cell mdl-cell--2-col mdl-cell--1-col-phone">
+                <div class="section__circle-container__circle">
+                  <img src="assets/img/user-deleted.png">
+                </div>
+              </div>
+              <div class="section__text mdl-cell mdl-cell--10-col-desktop mdl-cell--6-col-tablet mdl-cell--3-col-phone">
+                Ukončení identity (odchod zaměstnance nebo studenta), požadované akce: zrušení vazby na zdrojový objekt
+              </div>
+
+              <div class="mdl-cell mdl-cell--12-col">
+                <p>
+                  Identity synchronizované do IdM je potřeba dále propagovat do cílových systémů. Je-li do IdM namapována zaměstnanecká identita, musí ji hráč vytvořit v cílovém systému pro zaměstnance (MIS) i systému pro všechny identity (AD). Je-li do IdM namapována studentská identita, musí ji hráč vytvořit v cílovém systému pro všechny identity (AD).
+                  Události generované v cílových systémech jsou:
+                </p>
+              </div>
+              <div class="section__circle-container mdl-cell mdl-cell--2-col mdl-cell--1-col-phone">
+                <div class="section__circle-container__circle">
+                  <img src="assets/img/user-illegal.png">
+                </div>
+              </div>
+              <div class="section__text mdl-cell mdl-cell--10-col-desktop mdl-cell--6-col-tablet mdl-cell--3-col-phone">
+                Vytvoření nepovoleného účtu (správce systému si založil účet bez vědomí IdM), požadovaná akce: smazání nepovoleného účtu
+              </div>
+              <div class="section__circle-container mdl-cell mdl-cell--2-col mdl-cell--1-col-phone">
+                <div class="section__circle-container__circle">
+                  <img src="assets/img/user-invalid.png">
+                </div>
+              </div>
+              <div class="section__text mdl-cell mdl-cell--10-col-desktop mdl-cell--6-col-tablet mdl-cell--3-col-phone">
+                Nepovolená změna účtu (došlo k nepovolené změně nastavení účtu), požadovaná akce: aktualizace identity – opětovná synchronizace
+              </div>
+
+            </div>
+          </div>
+        </section>
+
+        <section class="section--center mdl-grid mdl-grid--no-spacing mdl-shadow--2dp">
+          <div class="mdl-card mdl-cell mdl-cell--12-col">
+            <div class="mdl-card__supporting-text">
+              <h4>O hře</h4>
+              <p>
+                Hra využívá nejnovější technologie a postupy pro vývoj webových aplikací. Za zmínku stojí Angular2, TypeScript, WebPack, Material Design, Express.js. Synchronizační logika je inspirována projektem OpenIDM.
+              </p>
+            </div>
+          </div>
+        </section>
+      </article>
+    </div>
+    </main>
+</div>

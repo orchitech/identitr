@@ -1,0 +1,77 @@
+<div class="info-wrapper">
+  <div class="username">{{player}}</div>
+  <div class="score">{{game.score}}</div>
+  <div class="time">{{game.time | time}}</div>
+</div>
+
+<div class="game-wrapper">
+  <div class="game-stage">
+    <div class="systems-source">
+      <ig-system [id]="game.sources[0]" [attr.id]="game.sources[0]" [dragula]="'game-drop'" style="flex-basis: 40%"></ig-system>
+      <ig-system [id]="game.sources[1]" [attr.id]="game.sources[1]" [dragula]="'game-drop'" style="flex-basis: 60%"></ig-system>
+    </div>
+    <div class="systems-idm">
+      <div [dragula]="'game-drop'" data-action="delete">
+        <svg fill="#888888" height="80" viewBox="0 0 24 24" width="80" xmlns="http://www.w3.org/2000/svg">
+          <path d="M0 0h24v24H0V0z" fill="none" />
+          <path class="bin" d="M6 19c0 1.1.9 2 2 2h8c1.1 0 2-.9 2-2V7H6v12zm2.46-7.12l1.41-1.41L12 12.59l2.12-2.12 1.41 1.41L13.41 14l2.12 2.12-1.41 1.41L12 15.41l-2.12 2.12-1.41-1.41L10.59 14l-2.13-2.12zM15.5 4l-1-1h-5l-1 1H5v2h14V4z" />
+          <path d="M0 0h24v24H0z" fill="none" />
+        </svg>
+      </div>
+      <ig-system [id]="'idm'" [attr.id]="'idm'" [dragula]="'game-drop'"></ig-system>
+      <div [dragula]="'game-drop'" data-action="delete">
+        <svg fill="#888888" height="80" viewBox="0 0 24 24" width="80" xmlns="http://www.w3.org/2000/svg">
+          <path d="M0 0h24v24H0V0z" fill="none" />
+          <path class="bin" d="M6 19c0 1.1.9 2 2 2h8c1.1 0 2-.9 2-2V7H6v12zm2.46-7.12l1.41-1.41L12 12.59l2.12-2.12 1.41 1.41L13.41 14l2.12 2.12-1.41 1.41L12 15.41l-2.12 2.12-1.41-1.41L10.59 14l-2.13-2.12zM15.5 4l-1-1h-5l-1 1H5v2h14V4z" />
+          <path d="M0 0h24v24H0z" fill="none" />
+        </svg>
+      </div>
+    </div>
+    <div class="systems-target">
+      <ig-system [id]="game.targets[0]" [attr.id]="game.targets[0]" [dragula]="'game-drop'" style="flex-basis: 40%"></ig-system>
+      <ig-system [id]="game.targets[1]" [attr.id]="game.targets[1]" [dragula]="'game-drop'" style="flex-basis: 60%"></ig-system>
+    </div>
+  </div>
+  <div class="links">
+    <ig-link *ngFor="let link of game.links" [link]="link" [plumb]="plumb"></ig-link>
+  </div>
+</div>
+
+<div class="footer-wrapper"></div>
+
+<div *ngIf="overlay == 'start'" class="overlay-wrapper">
+  <!-- Game start window -->
+  <div class="overlay-window center">
+    <h3 class="mdl-dialog__title">identitr</h3>
+    <div class="mdl-dialog__content">
+
+      <p *ngIf="game.status == 'gameover'">
+        Správce identit skončil chybou. Skóre: <b>{{game.score}}</b>
+      </p>
+
+      <div mdl-init class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+        <input required maxlength="64" [(ngModel)]="player" class="mdl-textfield__input" type="text" id="nickname">
+        <label class="mdl-textfield__label" for="nickname">Přezdívka správce identit</label>
+      </div>
+      <label mdl-init class="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect" for="noenroll">
+        <input [(ngModel)]="enroll" type="checkbox" id="noenroll" class="mdl-checkbox__input">
+        <span class="mdl-checkbox__label">Poslat mé skóre do síně slávy</span>
+      </label>
+    </div>
+    <div class="mdl-dialog__actions">
+      <button (click)="start();" [disabled]="!player" class="mdl-button mdl-button--raised mdl-button--colored">
+        {{game.status != 'gameover' ? 'hrát' : 'hrát znovu'}}
+      </button>
+      <button [routerLink]="['/help']" class="mdl-button">nápověda</button>
+    </div>
+  </div>
+</div>
+
+<div *ngIf="overlay == 'gameover'" (click)="overlay = 'start'" class="overlay-wrapper">
+  <!-- Game over window -->
+  <div class="center">
+    <h1 class="emoji">:-(</h1>
+  </div>
+</div>
+
+<div class="turnDevice"></div>

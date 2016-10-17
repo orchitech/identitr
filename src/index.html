@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <meta name="viewport" content="width=device-width; initial-scale=1.0; maximum-scale=1.0; minimum-scale=1.0; user-scalable=0;">
+  <meta name="mobile-web-app-capable" content="yes">
+
+  <title><%= webpackConfig.metadata.title %></title>
+
+  <meta name="description" content="<%= webpackConfig.metadata.title %>">
+
+  <% if (webpackConfig.htmlElements.headTags) { %>
+  <!-- Configured Head Tags  -->
+  <%= webpackConfig.htmlElements.headTags %>
+  <% } %>
+
+  <!-- base url -->
+  <base href="<%= webpackConfig.metadata.baseUrl %>">
+  <script src="assets/js/jsPlumb-2.1.7-min.js"></script>
+  <link rel="stylesheet" href="assets/material-design-lite/material.min.css">
+  <script src="assets/material-design-lite/material.min.js"></script>
+  <link rel="stylesheet" href="assets/material-design-lite/material.pink-purple.min.css" />
+</head>
+
+<body>
+
+  <app></app>
+
+  <% if (webpackConfig.metadata.isDevServer && webpackConfig.metadata.HMR !== true) { %>
+  <!-- Webpack Dev Server reload -->
+  <script src="/webpack-dev-server.js"></script>
+  <% } %>
+
+</body>
+</html>

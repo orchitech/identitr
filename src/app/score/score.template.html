@@ -1,0 +1,56 @@
+<div class="mdl-layout">
+  <header class="mdl-layout__header">
+    <div class="mdl-layout__header-row">
+      <span class="mdl-layout-title">Síň slávy</span>
+    </div>
+  </header>
+  <main class="mdl-layout__content">
+    <div class="mdl-grid">
+      <div class="mdl-cell mdl-cell--2-col mdl-cell--hide-tablet mdl-cell--hide-phone"></div>
+      <article class="mdl-cell mdl-cell--8-col">
+        <h3>Síň slávy</h3>
+
+        <p>Tabulka níže obsahuje seznam nejúspěšnějších správců identit.</p>
+
+        <table class="mdl-data-table mdl-js-data-table mdl-shadow--4dp">
+          <thead>
+            <tr>
+              <th class="mdl-data-table__cell--non-numeric">Správce identit</th>
+              <th>odehraný čas</th>
+              <th>dosažené skóre</th>
+              <th>počet odehraných her</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let result of result.results;trackBy:result?.uid">
+              <td class="mdl-data-table__cell--non-numeric">{{result.name}}</td>
+              <td>{{result.time | time}}</td>
+              <td>{{result.score}}</td>
+              <td>{{result.gamesplayed}}</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <h3>Statistika</h3>
+
+        <table *ngIf="result.totals" class="mdl-data-table mdl-js-data-table mdl-shadow--4dp">
+          <tbody>
+            <tr>
+              <td class="mdl-data-table__cell--non-numeric">Celkový čas hraní</td>
+              <td>{{result.totals.time | time}}</td>
+            </tr>
+            <tr>
+              <td class="mdl-data-table__cell--non-numeric">Celkové skóre</td>
+              <td>{{result.totals.score}}</td>
+            </tr>
+            <tr>
+              <td class="mdl-data-table__cell--non-numeric">Celkový počet odehraných her</td>
+              <td>{{result.totals.games}}</td>
+            </tr>
+          </tbody>
+        </table>
+
+      </article>
+    </div>
+  </main>
+</div>
